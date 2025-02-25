@@ -17,14 +17,14 @@ class ExpandRequest(BaseModel):
     display_language: str = "en-gb"
 
 
-class ValuesetFilter(filters.FilterSet):
+class ValueSetFilter(filters.FilterSet):
     name = filters.CharFilter(field_name="name", lookup_expr="icontains")
     status = filters.CharFilter(field_name="status", lookup_expr="iexact")
 class ValueSetViewSet(EMRModelViewSet):
     database_model = ValueSet
     pydantic_model = ValueSetSpec
     pydantic_read_model = ValueSetReadSpec
-    filterset_class = ValuesetFilter
+    filterset_class = ValueSetFilter
     filter_backends = [DjangoFilterBackend]
     lookup_field = "slug"
 
